@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainAppController">
+   <children>
+      <SplitPane dividerPositions="0.75" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                <AnchorPane fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" text="Lure Inventory" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="30.0" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                              </items>
+                            </Menu>
+                              <Menu mnemonicParsing="false" text="Commands">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleFindLure" text="Find Lure" />
+                                    <MenuItem mnemonicParsing="false" onAction="#editLureCount" text="Edit Lure Count" />
+                                </items>
+                              </Menu>
+                          </menus>
+                        </MenuBar>
+                        <GridPane alignment="CENTER" layoutX="199.0" layoutY="112.0" prefHeight="175.0" prefWidth="400.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="67.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="258.0" prefWidth="475.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Brand:">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Lure Name:" GridPane.rowIndex="1">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Color:" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Quantity:" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Size:" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Length:" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="brandTextField" GridPane.columnIndex="1" />
+                              <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="colorTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="quantityTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="sizeTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="lengthTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </GridPane>
+                        <HBox alignment="BOTTOM_CENTER" layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="260.0">
+                           <children>
+                              <MenuButton fx:id="hoverMenuButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Add ">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#jigAdder" text="Jig" />
+                                  <MenuItem mnemonicParsing="false" onAction="#crankbaitAdder" text="Crankbait" />
+                                    <MenuItem mnemonicParsing="false" onAction="#softPlasticAdder" text=" Soft Plastic" />
+                                    <MenuItem mnemonicParsing="false" onAction="#topWaterAdder" text="Top Water" />
+                                </items>
+                              </MenuButton>
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="jigPane" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Commands">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleFindLure" text="Find Lure" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="48.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="75.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="258.0" prefWidth="325.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Jig Type">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="jigTypeTextField" GridPane.columnIndex="1" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addJig" prefHeight="25.0" prefWidth="100.0" text="Add" />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="softPlasticPane" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Commands">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleFindLure" text="Find Lure" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="174.0" prefWidth="549.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="0.0" prefWidth="166.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="202.0" prefWidth="383.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Pack Quantity:">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label text="Uses (seperate with comma):" GridPane.rowIndex="1">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="packQuantTextField" GridPane.columnIndex="1" />
+                              <TextField fx:id="usesTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <CheckBox fx:id="floatCheckBox" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Floats" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                              </CheckBox>
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addSoftPlastic" prefHeight="25.0" prefWidth="100.0" text="Add " />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="deepDiverPane" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Commands">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleFindLure" text="Find Lure" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="48.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="75.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="258.0" prefWidth="325.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Dives To: ">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="divesToTextField" GridPane.columnIndex="1" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addDeepDiver" prefHeight="25.0" prefWidth="100.0" text="Add " />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="topWaterPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Commands">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#handleFindLure" text="Find Lure" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="48.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="104.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="258.0" prefWidth="296.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Top Water Type">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="topWaterTypeTextField" prefHeight="26.0" prefWidth="283.0" GridPane.columnIndex="1" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#addTopWater" prefHeight="25.0" prefWidth="100.0" text="Add " />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="findLurePane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="48.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="74.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="258.0" prefWidth="326.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Lure Name">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="lureNameTextField" prefHeight="26.0" prefWidth="283.0" GridPane.columnIndex="1" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#findAndDisplayLure" prefHeight="25.0" prefWidth="100.0" text="Find" />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="editLureCountPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="31.0" prefHeight="0.0" prefWidth="78.0" text="Lure Inventory" />
+                        <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <menus>
+                              <Menu mnemonicParsing="false" onAction="#closeApp" text="File">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
+                                 </items>
+                              </Menu>
+                           </menus>
+                        </MenuBar>
+                        <GridPane layoutX="199.0" layoutY="112.0" prefHeight="48.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="0.0" prefWidth="91.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="258.0" prefWidth="309.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="37.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Lure Name">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="lureNameCountTextField" prefHeight="26.0" prefWidth="283.0" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="Quantity Lost" GridPane.rowIndex="1" />
+                              <TextField fx:id="amountLostTextField" prefHeight="26.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </GridPane>
+                        <HBox layoutX="115.0" layoutY="264.0" prefHeight="35.0" prefWidth="167.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#editQuantity" prefHeight="25.0" prefWidth="100.0" text="Edit Quantity" />
+                              <Button mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="100.0" text="Clear" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ListView fx:id="inventoryShower" layoutX="-8.0" layoutY="-59.0" prefHeight="96.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
